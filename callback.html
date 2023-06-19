@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>hello eveeryOne</h1>
+
+    <script>
+      let fee = true;
+      let marks = 90;
+
+      function admit() {
+        console.log("Admission is proccessing...");
+
+        const promise = new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            if (fee) {
+              resolve();
+            } else {
+              reject("payment is not successful...");
+            }
+          }, 2000);
+        });
+
+        return promise;
+      }
+
+      function course() {
+        console.log("Course is proggressing...");
+
+        const promise = new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            if (marks >= 80) {
+              resolve();
+            } else {
+              reject("Mark is not sufficient...");
+            }
+          }, 3000);
+        });
+
+        return promise;
+      }
+
+      function certificate() {
+        console.log("Certificate is proccessing...");
+
+        const promise = new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            resolve("Congratulations!!Best Of luck!!");
+          }, 1000);
+        });
+
+        return promise;
+      }
+
+      async function final() {
+        try {
+          await admit();
+          await course();
+         const message = await certificate();
+         console.log(message);
+        } catch (err) {
+          console.log(err);
+        }
+
+       
+      }
+
+      final();
+
+      // admit()
+      //      .then(course)
+      //      .then(certificate)
+      //      .then(function(value){
+      //         console.log(value);
+      //      })
+      //      .catch(function(err){
+      //         console.log(err);
+      //      })
+    </script>
+  </body>
+</html>
